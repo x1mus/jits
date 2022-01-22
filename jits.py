@@ -1,10 +1,10 @@
 import argparse, sys
-from orgs import nato, nviso, approach
+from orgs import nato, nviso, approach, ictjobs
 
 
 class Jits:
 	def __init__(self):
-		self.website_list = ["nato", "nviso", "approach"]
+		self.website_list = ["nato", "nviso", "approach", "ictjobs"]
 		parser = argparse.ArgumentParser(
 		description="Scrape IT job offers",
 		usage="""jits.py <command> [<args>]
