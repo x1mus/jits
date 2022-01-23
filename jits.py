@@ -43,17 +43,10 @@ The most commonly used commands are:
 		args = parser.parse_args(sys.argv[2:])
 		
 		if args.site in self.website_list:
-			if not args.keyword:
-				eval(f"common.display('{args.site}', {args.keyword})")
-			else:
-				eval(f"common.display('{args.site}', '{args.keyword}')")
+			common.display(args.site, args.keyword)
 		else:
 			for s in self.website_list:
-				if not args.keyword:
-					eval(f"common.display('{s}', {args.keyword})")
-				else:
-					eval(f"common.display('{s}', '{args.keyword}')")
-
+				common.display(s, args.keyword)
 
 
 if __name__ == "__main__":

@@ -1,6 +1,10 @@
 import json, re
 
 
+def scrape(site_name):
+	eval(site_name + ".scrape()")
+
+
 def display(site_name, keyword=None):
 	with open("jobs.json", "r") as f:
 		saved_jobs = json.loads(f.read())
