@@ -1,5 +1,5 @@
 import argparse, sys
-from orgs import nato, nviso, approach, ictjobs
+from orgs import common, nato, nviso, approach, ictjobs
 
 
 class Jits:
@@ -44,15 +44,15 @@ The most commonly used commands are:
 		
 		if args.site in self.website_list:
 			if not args.keyword:
-				eval(f"{args.site}.display({args.keyword})")
+				eval(f"common.display('{args.site}', {args.keyword})")
 			else:
-				eval(f"{args.site}.display('{args.keyword}')")
+				eval(f"common.display('{args.site}', '{args.keyword}')")
 		else:
 			for s in self.website_list:
 				if not args.keyword:
-					eval(f"{s}.display({args.keyword})")
+					eval(f"common.display('{s}', {args.keyword})")
 				else:
-					eval(f"{s}.display('{args.keyword}')")
+					eval(f"common.display('{s}', '{args.keyword}')")
 
 
 

@@ -48,19 +48,3 @@ def scrape():
 	# Saving new jobs
 	with open("jobs.json", "w") as f:
 		f.write(json.dumps(saved_jobs))
-
-def display(keyword=None):
-	with open("jobs.json", "r") as f:
-		saved_jobs = json.loads(f.read())
-
-	if "nato" not in saved_jobs.keys(): return
-
-	i = 0
-	for job in saved_jobs["nato"]:
-		if keyword:
-			if re.search(keyword, job):
-				print(f"nato - {i:03} - {job}")
-				i += 1
-		else:
-			print(f"nato - {i:03} - {job}")
-			i += 1
