@@ -1,5 +1,5 @@
 import argparse, sys
-from orgs import common, nato, nviso, approach, ictjobs
+from orgs import common
 
 
 class Jits:
@@ -31,10 +31,10 @@ The most commonly used commands are:
 		args = parser.parse_args(sys.argv[2:])
 		
 		if args.site in self.website_list:
-			eval(args.site + ".scrape()") # Not sure about that
+			common.scrape(args.site)
 		else:
 			for s in self.website_list:
-				eval(s + ".scrape()") # Not sure about that
+				common.scrape(s)
 
 	def display(self):
 		parser = argparse.ArgumentParser(description="Display job offers")
