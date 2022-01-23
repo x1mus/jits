@@ -1,10 +1,13 @@
-import argparse, sys
+import argparse, sys, glob
 from orgs import common
 
 
 class Jits:
 	def __init__(self):
-		self.website_list = ["nato", "nviso", "approach", "ictjobs"]
+		# Getting the list of sites from the filenames in the "orgs" folder
+		self.website_list = [s[5:-3] for s in glob.glob("orgs/*.py")]
+		self.website_list.remove("common")
+		
 		parser = argparse.ArgumentParser(
 		description="Scrape IT job offers",
 		usage="""jits.py <command> [<args>]

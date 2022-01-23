@@ -2,7 +2,7 @@ import json, re
 from . import approach, ictjobs, nato, nviso
 
 def scrape(site_name):
-	new_jobs = eval(site_name + ".scrape()")
+	new_jobs = eval(site_name + ".scrape()") # This might be worth thinking about something else
 
 	with open("jobs.json", "r") as f:
 		saved_jobs = json.loads(f.read())
