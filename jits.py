@@ -1,10 +1,13 @@
-import argparse, sys
-from orgs import nato, nviso, approach, ictjobs
+import argparse, sys, glob
+from orgs import common
 
 
 class Jits:
 	def __init__(self):
-		self.website_list = ["nato", "nviso", "approach", "ictjobs"]
+		# Getting the list of sites from the filenames in the "orgs" folder
+		self.website_list = [s[5:-3] for s in glob.glob("orgs/*.py")]
+		self.website_list.remove("common")
+		
 		parser = argparse.ArgumentParser(
 		description="Scrape IT job offers",
 		usage="""jits.py <command> [<args>]
@@ -31,10 +34,10 @@ The most commonly used commands are:
 		args = parser.parse_args(sys.argv[2:])
 		
 		if args.site in self.website_list:
-			eval(args.site + ".scrape()") # Not sure about that
+			common.scrape(args.site)
 		else:
 			for s in self.website_list:
-				eval(s + ".scrape()") # Not sure about that
+				common.scrape(s)
 
 	def display(self):
 		parser = argparse.ArgumentParser(description="Display job offers")
@@ -43,17 +46,10 @@ The most commonly used commands are:
 		args = parser.parse_args(sys.argv[2:])
 		
 		if args.site in self.website_list:
-			if not args.keyword:
-				eval(f"{args.site}.display({args.keyword})")
-			else:
-				eval(f"{args.site}.display('{args.keyword}')")
+			common.display(args.site, args.keyword)
 		else:
 			for s in self.website_list:
-				if not args.keyword:
-					eval(f"{s}.display({args.keyword})")
-				else:
-					eval(f"{s}.display('{args.keyword}')")
-
+				common.display(s, args.keyword)
 
 
 if __name__ == "__main__":

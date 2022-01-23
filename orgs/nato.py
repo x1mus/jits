@@ -1,4 +1,3 @@
-import json, re
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
@@ -22,45 +21,4 @@ def scrape():
 	for job in jobs_elt:
 		new_jobs.append(job.find("a").text.lower())
 
-	with open("jobs.json", "r") as f:
-		saved_jobs = json.loads(f.read())
-
-	# Checking if "nato" exists in the json file
-	if "nato" not in saved_jobs.keys():
-		saved_jobs["nato"] = []
-
-	# Removing out of date jobs
-	out_jobs = []
-	for job in saved_jobs["nato"]:
-		if job not in new_jobs:
-			old_jobs.append(job)
-	for job in out_jobs:
-		saved_jobs["nato"].remove(job)
-
-	# Adding new jobs at the beginning
-	to_add = []
-	for job in new_jobs:
-		if job not in saved_jobs["nato"]:
-			to_add.append(job)
-	for job in to_add:
-		saved_jobs["nato"].append(job)
-
-	# Saving new jobs
-	with open("jobs.json", "w") as f:
-		f.write(json.dumps(saved_jobs))
-
-def display(keyword=None):
-	with open("jobs.json", "r") as f:
-		saved_jobs = json.loads(f.read())
-
-	if "nato" not in saved_jobs.keys(): return
-
-	i = 0
-	for job in saved_jobs["nato"]:
-		if keyword:
-			if re.search(keyword, job):
-				print(f"nato - {i:03} - {job}")
-				i += 1
-		else:
-			print(f"nato - {i:03} - {job}")
-			i += 1
+	return new_jobs
