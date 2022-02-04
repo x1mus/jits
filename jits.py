@@ -15,6 +15,7 @@ class Jits:
 The most commonly used commands are:
 	scrape		Run the scraping
 	display		Display job offers
+	info		Display the implemented websites
 """)
 		parser.add_argument("command", help="Subcommand to run")
 		args = parser.parse_args(sys.argv[1:2])
@@ -23,6 +24,10 @@ The most commonly used commands are:
 			self.scrape()
 		elif args.command == "display":
 			self.display()
+		elif args.command == "info":
+			print("Implemented websites :")
+			for e in self.website_list:
+				print(f"- {e}")
 		else:
 			print("Unrecognized command")
 			parser.print_help()
