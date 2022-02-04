@@ -39,10 +39,16 @@ The most commonly used commands are:
 		args = parser.parse_args(sys.argv[2:])
 		
 		if args.site in self.website_list:
-			common.scrape(args.site)
+			try:
+				common.scrape(args.site)
+			except:
+				print(f"An error occured while scraping {args.site}")
 		else:
 			for s in self.website_list:
-				common.scrape(s)
+				try:
+					common.scrape(s)
+				except:
+					print(f"An error occured while scraping {s}")
 
 	def display(self):
 		parser = argparse.ArgumentParser(description="Display job offers")
