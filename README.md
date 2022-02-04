@@ -32,10 +32,11 @@ To install geckodriver :
 - Create a symlink `ln -sf /usr/local/share/geckodriver /usr/local/bin`
 
 ### Executing the program
-Jits works in two different modes. You can launch them without any arguments and this will scrape/display every implemented sites :
+Jits works in three different modes. You can launch the "scrape/display" modes without any arguments and it will execute them for every implemented sites :
 ```bash
 $ python3 jits.py scrape # This will populate/update the "jobs.json" file
 $ python3 jits.py display # This will display the "jobs.json" file
+$ python3 jits.py info # This will display all implemented websites
 ```
 
 If you don't want to scrape/display every possible sites, you can choose to target a specific site :
