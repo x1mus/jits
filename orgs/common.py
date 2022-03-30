@@ -1,5 +1,5 @@
 import json, re
-from . import approach, ictjobs, nato, nviso
+from . import approach, ictjobs, nato, nviso, toreon
 
 def scrape(site_name):
 	new_jobs = eval(site_name + ".scrape()") # This might be worth thinking about something else
