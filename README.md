@@ -65,14 +65,17 @@ You can contribute to this project from different aspects :
 ### Implement a new website support
 In order to successfully create a pull requests (this is, to get better chance of being merged):
 1. Create a new python file in the "orgs" folder with the name of the organization
-2. Add the name of the company in the "common.py" file. `from . import <org_name>`
-3. Implement the "scrape" method with bs4 and requests/selenium returning a list containing all jobs title (lowercase only)
+2. Add the name of the company in the import of the "common.py" file. `from . import <org_name>`
+3. Add the name of the company in the sites list of the "common.py" file. `sites = ["<org_name>"]`
+4. Implement the "scrape" method with bs4 and requests/selenium returning a list containing all jobs title (lowercase only)
 
 Here's a simple example with the fictive company "Easy IT".
 ```python
 # FILE - orgs/common.py
 ...
 from . import easy_it
+
+sites = ["easy_it"]
 ...
 ```
 

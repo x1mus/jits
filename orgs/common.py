@@ -1,8 +1,14 @@
 import json, re
 from . import approach, ictjobs, nato, nviso, toreon
 
+sites = ["approach", "ictjobs", "nato", "nviso", "toreon"]
+
 def scrape(site_name):
-	new_jobs = eval(site_name + ".scrape()") # This might be worth thinking about something else
+	if site_name in sites:
+		new_jobs = eval(site_name + ".scrape()")
+	else:
+		print("Unrecognized website")
+		exit()
 
 	with open("jobs.json", "r") as f:
 		saved_jobs = json.loads(f.read())
